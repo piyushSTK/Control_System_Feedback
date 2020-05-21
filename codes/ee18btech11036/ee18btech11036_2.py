@@ -46,8 +46,8 @@ plt.grid()
 print ("Low frequency Gain ",mag[0])
 print("Gain at crossover frequency dB ", 44.3866)
 
-plt.savefig('./figs/ee18btech11036/ee18btech11036_3.pdf')
-plt.savefig('./figs/ee18btech11036/ee18btech11036_3.eps')
-subprocess.run(shlex.split("termux-open ./figs/ee18btech11036/ee18btech11036_3.pdf"))
+plt.savefig('./figs/ee18btech11036/ee18btech11036_2.pdf')
+plt.savefig('./figs/ee18btech11036/ee18btech11036_2.eps')
+subprocess.run(shlex.split("termux-open ./figs/ee18btech11036/ee18btech11036_2.pdf"))
 #else
 #plt.show()
