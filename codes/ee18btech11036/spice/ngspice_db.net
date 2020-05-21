@@ -1,0 +1,25 @@
+*Step response of the system:-
+Vin vin 0 0.01
+R1 vin va 100
+R2 va v1 33.057k
+Vd1 vdd 0 20
+Vd2 0 -vdd 20
+XU1 0 va vdd -vdd v1 LM741
+R3 v1 vb 1.446k
+R4 vb v2 1.446k
+C1 vb v2 1n
+XU2 0 vb vdd -vdd v2 LM741
+R5 v2 vc 1.446k
+R6 vc v3 1.446k
+XU3 0 vc vdd -vdd v3 LM741
+R7 v3 vd 1.446k
+C2 vd vo 4n
+R8 vb vo 1.446k
+XU4 0 vd vdd -vdd vo LM741
+.include LM741.MOD
+.tran 0.00001 0.0002 UIC
+.control
+run
+wrdata ee18btech11036.dat V(vo)
+.endc
+.end

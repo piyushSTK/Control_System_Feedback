@@ -1,0 +1,360 @@
+An amplifier having a low-frequency gain of 1000 and poles at $10^4$ Hz and $10^5$ Hz is operated in a closed negative-feedback loop with a frequency-independent $H$.  
+\begin{enumerate}[label=\alph*.]
+\item  For what value of H do the closed-loop poles become coincident? At what frequency?\\
+\item  What is the low-frequency gain corresponding to the situation in (a)? What is the value of the closed-loop gain at the frequency of the coincident poles?\\
+\item  What is the value of Q corresponding to the situation in(a)?\\
+\item If H is increased by a factor of 10, what are the new pole locations? What is the corresponding pole Q?
+\end{enumerate}
+%\begin{enumerate}[label=\thesubsection.\arabic*.,ref=\thesubsection.\theenumi]
+\begin{enumerate}[label=\arabic*.,ref=\theenumi]
+\numberwithin{equation}{enumi}
+
+\item Find $G(s)$
+\\
+\solution Given, low frequency Gain and two poles.Therefore,G(s) can be written as..,
+\begin{align}
+  G(s) &= \frac{G_0}{\brak{1+\frac{s}{p_{1}}}\brak{1+\frac{s}{p_{2}}}} 
+\label{eq:ee18btech11036_open_loop_gain} 
+\end{align}
+where the parameters are tabulated in Table \ref{table:ee18btech11036_ Input_Table}
+
+\begin{table}[!ht]
+\centering
+\input{./tables/ee18btech11036/ee18btech11036_1.tex}
+\caption{}
+\label{table:ee18btech11036_ Input_Table}
+\end{table}
+%where the parameters are listed in 
+%,-p1 and -p2 are poles of G(s).
+%Parameters given are shown in Table.\ref{table:ee18btech11036_ Input_Table}:1
+%\begin{align}
+%    G_0 &= 1000\\
+%\text{Therefore.,} G(s)&= \frac{1000}{\brak{1+\frac{s}{p_{1}}}\brak{1+\frac{s}{p_{2}}}}  
+%\end{align}
+%Where $p_1$ and $p_2$ are 
+%\begin{align}
+%    p_1 &= 2\pi10^4 rad/sec\\
+%    p_2 &= 2\pi10^5 rad/sec
+%    \label{eq:ee18btech11036_p_values}
+%\end{align}
+%Now, we connect the system in a negative feedback of feedback factor H.
+%We know that the closed loop gain of a negative feedback system is.,
+
+%------------------------------
+\item For what value of H do the closed-loop poles become coincident? At what frequency?\\
+\solution The closed loop transfer function is
+\begin{align}
+\label{eq:ee18btech11036_transfer_function}
+    T(s) &= \frac{G(s)}{1+G(s)H} 
+%\\
+% &= \frac{\frac{G_0}{\brak{1+\frac{s}{p_{1}}}\brak{1+\frac{s}{p_{2}}}}}{1+\frac{HG_0}{\brak{1+\frac{s}{p_{1}}}\brak{1+\frac{s}{p_{2}}}}}\\
+%\end{align}
+%\begin{align}
+%    T(s) &= \frac{G_0}{\brak{1+\frac{s}{p_1}}\brak{1+\frac{s}{p_2}} + HG_0}\\
+\\
+    T(s) &= \frac{G_0}{\frac{s^2}{p_1p_2} + \brak{\frac{1}{p_1}+\frac{1}{p_2}}s + HG_0+1}
+    \label{eq:ee18btech11036_closed_loop}
+\end{align}
+upon substituting from \eqref{eq:ee18btech11036_open_loop_gain}  and simplifying.  
+%
+For     \eqref{eq:ee18btech11036_closed_loop} to have equal roots,
+
+%For this equation to have equal and repetitive roots, D=0
+%\begin{align}
+%    b^2-4ac=0
+%    \label{eq:ee18btech11036_ce}
+%\end{align}
+
+\begin{align}
+    \brak{\frac{1}{p_1}+\frac{1}{p_2}}^2&= \frac{4}{p_1p_2}\brak{G_0H+1}
+    \label{eq:ee18btech11036_h}
+%\end{align}
+\\
+%\begin{align}
+\implies     H &= \frac{\brak{p_1-p_2}^2}{4G_0p_1p_2}
+    \label{eq:ee18btech11036_h_final}
+%\end{align}
+%Value of H on plugging in values:
+%\begin{align}
+\\
+    H &= 2.025 \times 10^{-3}
+    \label{eq:ee18btech11036_h_value}
+\end{align}
+%Using this our final closed loop transfer function is:
+yielding
+\begin{align}
+    T(s) &= \frac{1000}{2.533 \times 10^{-11}s^2+1.750 \times 10^{-5}s+3.025}
+    \label{eq:ee18btech11036_Transfer_func_1}
+\end{align}
+
+The following code computes the poles to be at $\omega_p = 345575.1$. rad/sec
+\begin{lstlisting}
+codes/ee18btech11036/ee18btech11036_1.py
+\end{lstlisting}
+
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics[width=\columnwidth]{./figs/ee18btech11036/ee18btech11036_1.eps}
+%\caption{}
+%\label{fig:ee18btech11036_ee18btech11036_1}
+%\end{figure}
+%From  the above graph is is evident that the system has two coinciding poles at frequency 
+
+
+\item Find $T(0)$ and $\abs{T(\j\omega_p)}$.
+\\
+%What is the low-frequency gain corresponding  to  the  situation  in  (a)?  What  is  the  valueof the closed-loop gain at the frequency of the coincident poles?\\
+\solution From \ref{eq:ee18btech11036_Transfer_func_1}, 
+%Putting s=0 in equation 
+\begin{align}
+    T(0)&= \frac{1000}{3.025} =  50.378 \, dB
+    \label{eq:ee18btech11036_zero_gain_value}
+\\
+\abs{T(\j\omega_p)} &=44.3866
+\end{align}
+%Plot the transfer function above using the given code  
+%\begin{lstlisting}
+%codes/ee18btech11036/ee18btech11036_2.py
+%\end{lstlisting}
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics[width=\columnwidth]{./figs/ee18btech11036/ee18btech11036_2.eps}
+%\caption{}
+%\label{fig:ee18btech11036_ee18btech11036_2}
+%\end{figure}
+%
+%From the plot , the gain (dB) at pole frequency is 44.3866
+
+\item Find $Q$ from      \eqref{eq:ee18btech11036_closed_loop}.
+\\
+\solution  If the denominator of \eqref{eq:ee18btech11036_closed_loop} is expressed as
+%
+\begin{multline}
+\frac{s^2}{p_1p_2} + \brak{\frac{1}{p_1}+\frac{1}{p_2}}s + HG_0+1 
+\\
+= s^2+2\zeta\omega_ns+\omega_n^{2} \label{eq:ee18btech11036_second_order_ce}
+\end{multline}
+then 
+%The quality factor Q of equation.\ref{eq:ee18btech11036_second_order_ce}, is given by
+\begin{align}
+    \omega_n &= {\sqrt{\brak{HG_0+1}p_1p_2}}\\
+    \zeta &= {\frac{2p_1p_2}{\sqrt{\brak{HG_0+1}p_1p_2}}}
+\end{align}
+and 
+\begin{align}
+    Q &= \frac{1}{2\zeta}
+%\end{align}
+%
+%From equation.\ref{eq:ee18btech11036_closed_loop} and \ref{eq:ee18btech11036_p_values}
+%Therefore,For the given second order amplifier with characteristic equation.\ref{eq:ee18btech11036_ce},the Q factor is,
+%\begin{align}
+\\
+     &= \pm{\frac{\sqrt{\brak{1+HG_0}p_1p_2}}{p_1+p_2}} \label{eq:ee18btech11036_Q}
+%\end{align}
+%From equations \ref{eq:ee18btech11036_h_value} , \ref{eq:ee18btech11036_p_values}
+%\begin{align}
+\\
+     &= 0.5
+\end{align}
+%---------------------
+\item If  H  is  increased  by  a  factor  of  10,  what are the new pole locations? What is the corresponding pole Q?\\
+\begin{table}[!ht]
+\centering
+\input{./tables/ee18btech11036/ee18btech11036_3.tex}
+\caption{}
+\label{table:ee18btech11036_ out_Table}
+\end{table}
+
+\solution  From     \eqref{eq:ee18btech11036_h_value},
+
+%H is increased by factor of 10, hence
+\begin{align}
+     H=0.02025
+     \label{eq:ee18btech11036_new_h}
+\end{align}
+which, upon substitution in  \ref{eq:ee18btech11036_closed_loop} yields
+%
+\begin{align}
+    T(s) &= \frac{1000}{2.533 \times 10^{-11}s^2+1.750 \times 10^{-5}s+21.25}
+    \label{eq:ee18btech11036_Transfer_func_2}
+\end{align}
+The new pole locations are given by the following code
+\begin{lstlisting}
+codes/ee18btech11036/ee18btech11036_3.py
+\end{lstlisting}
+
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics[width=\columnwidth]{./figs/ee18btech11036/ee18btech11036_3.eps}
+%\caption{}
+%\label{fig:ee18btech11036_ee18btech11036_3}
+%\end{figure}
+%Poles are : 
+% \begin{align}
+%     $p_1$ &= -345575.19 + j848230.0    
+% \\
+%     $p_2$ &= -345575.19 - j848230.0
+% %     \label{eq:ee18btech11036_new_poles}
+% \end{align}
+
+%From equation \ref{eq:ee18btech11036_Q}
+%\begin{align}
+%    Q &= \pm{\frac{\sqrt{\brak{1+10HG_0}p_1p_2}}{p_1+p_2}} \label{eq:ee18btech11036_Q_2}
+%\end{align}
+%Solving this we get :
+%
+and 
+\begin{align}
+    Q=1.325
+    \label{eq:ee18btech11036_Q_new2}
+\end{align}
+%-----------------
+
+\item Find the step response of $T(s)$
+\\
+\solution The following code generates the desired response  in Fig. \ref{fig:ee18btech11036_ee18btech11036_4}.
+\begin{lstlisting}
+codes/ee18btech11036/ee18btech11036_4.py
+\end{lstlisting}
+%
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./figs/ee18btech11036/ee18btech11036_4.eps}
+\caption{}
+\label{fig:ee18btech11036_ee18btech11036_4}
+\end{figure}
+
+
+
+%-------------------------------
+\item Design a circuit for $T(s)$ in \eqref{eq:ee18btech11036_Transfer_func_1}.
+\\
+\numberwithin{figure}{enumi}
+\solution Consider the circuit in 
+%The circuit can be designed using an operational amplifiers having negative feedback.Consider the circuit shown in 
+Fig. \ref{fig:ee18btech11036_equivalent_control_system}.
+%:1.Assume the gain of all the amplifiers are large.And assume no zero state response.Take the parameters in s-domain.\\
+\renewcommand{\thefigure}{\theenumi.\arabic{figure}}
+\begin{figure}[!hbt]
+	\begin{center}
+			\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11036/circuit_design.tex}}
+	\end{center}
+\caption{}
+\label{fig:ee18btech11036_equivalent_control_system}
+\end{figure}
+%
+%Then
+%%\textbf{For the first amplifier..,}
+%%Applying KCL at node A., 
+%%Since, the opamp has large gain, potential at node A is assumed to be zero due to virtual short at node A.
+%\begin{align}
+%%    \frac{0-V_{in}(s)}{R_1} +\frac{0-V_1(s)}{R_2} &= 0\\
+%%    \frac{V_{in}(s)}{R_1} &= \frac{V_1(s)}{R_2}\\
+%%\implies 
+%V_{in} &= -\frac{V_1(s) R_1}{R_2}\label{eq:ee18btech11036_opamp_1}
+%%\end{align}
+%%\textbf{For the second amplifier..,}
+%%Applying KCL at node B..,
+%%Similarly potential at node B is zero.
+%%\begin{align}
+%%  \frac{-V_1(s)}{R}+\frac{-V_2(s)}{R}-sCV_2(s)+\frac{-V_{out}(s)}{R} &= 0\\
+%%  \frac{-V_1(s)}{R}+\frac{-V_2(s)}{R}-sCV_2(s) = \frac{V_{out}(s)}{R} \\
+%\\
+%  \frac{-V_1(s)}{R} &= V_2(s)\sbrak{sC+\frac{1}{R}}+\frac{V{out}(s)}{R} \label{eq:ee18btech11036_opamp_2}
+%%\end{align}
+%%\textbf{For the third amplifier..,}
+%%Potential at node C is zero(Due to high gain of amplifier).Applying KCL at node C.
+%%\begin{align}
+%%    \frac{-V_2(s)}{R}+\frac{-V_3(s)}{R} = 0\\
+%%    \implies 
+%\\
+%V_2(s) &= -V_3(s) \label{eq:ee18btech11036_opamp_3}
+%%\end{align}
+%%\textbf{For the Fourth amplifier.,}
+%%Potential at node D is zero.Applying KCL at node D.
+%%\begin{align}
+%%    \frac{-V_3(s)}{R}+sC_1(-V_{out}(s)) = 0\\
+%\\
+%    V_3(s) &= -sC_1RV_{out}(s) \label{eq:ee18btech11036_opamp_4}
+%\end{align}
+%by computing the closed loop gain for each opamp.
+%From equation.\ref{eq:ee18btech11036_opamp_4} and equation. \ref{eq:ee18btech11036_opamp_3}..,
+%\begin{align}
+%    V_2(s) = sC_1RV_{out}(s) \label{eq:ee18btech11036_eq_1}
+%\end{align}
+%Substituting the equation.\ref{eq:ee18btech11036_opamp_2} and equation.\ref{eq:ee18btech11036_eq_1},
+%\begin{align}
+%    \frac{-V_1(s)}{R} &= \brak{s^2C_1CR + sC_1}V_{out}(s) +\frac{V_{out}(s)}{R}\\
+%    V_1(s) &= -\brak{s^2C_1CR^2+sC_1R+1}V_{out}(s)\label{eq:ee18btech11036_eq_2}
+%\end{align}
+%from equation.\ref{eq:ee18btech11036_opamp_1} and equation.\ref{eq:ee18btech11036_eq_2}.
+\begin{align}
+%     V_1(s) &= \frac{R_1}{R_2}\brak{s^2C_1CR^2+sC_1R+1}V_{out}(s)\\
+    \frac{V_{out}(s)}{V_{in}(s)} &= \frac{R_2}{R_1\brak{s^2C_1CR^2+sC_1R+1}} 
+    \label{eq:ee18btech11036_eq_3}
+\end{align}
+Using parameters from \ref{table:ee18btech11036_ Output_Table} in 
+\eqref{eq:ee18btech11036_eq_3}, \eqref{eq:ee18btech11036_Transfer_func_1} is obtained.
+%Comparing equation.\ref{eq:ee18btech11036_Transfer_func_1} and equation.\ref{eq:ee18btech11036_eq_3}
+%\begin{align}
+%    R_2 &= 33k\Omega \\
+%    R_1 &= 100 \Omega\\
+%    C_1CR^2 &= 0.8373x10^{-11} \\
+%    C_1R &= 0.5785x10^{-5} F\\
+%\text{Let.,} C_1 &= 4 nF \\
+%\implies C &= 1 nF \\
+% \text{and.,} C_1R &= 0.5785x10^{-5} F \\
+% \implies R &= 1.446 k\Omega
+%\end{align}
+
+\begin{table}[!ht]
+\centering
+\input{./tables/ee18btech11036/ee18btech11036_2.tex}
+\caption{}
+\label{table:ee18btech11036_ Output_Table}
+\end{table}
+ The circuit can be represented as block diagram as shown in Fig. \ref{fig:ee18btech11036_block_diag}
+\begin{figure}[!hbt]
+	\begin{center}
+			\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11036/block_diag.tex}}
+	\end{center}
+\caption{}
+\label{fig:ee18btech11036_block_diag}
+\end{figure}
+\renewcommand{\thefigure}{\theenumi}
+\\
+Solving this block diagram:
+\begin{align}
+%     V_1(s) &= \frac{R_1}{R_2}\brak{s^2C_1CR^2+sC_1R+1}V_{out}(s)\\
+    T(s) &= \frac{-R_2}{R_1}\brak{\frac{G(s)}{1+G(s)H(s)}}
+    \label{eq:ee18btech11036_eq_5}
+    \\
+    T(s) &= \frac{-R_2}{R_1}\brak{\frac{\frac{-1}{\brak{1+sCR}\brak{sCR_1}}}{1+\frac{-1}{\brak{1+sCR}\brak{sCR_1}}\brak{-1}}}
+    \label{eq:ee18btech11036_eq_6}
+    \\
+    \implies T(s) &= \frac{R_2}{R_1\brak{s^2C_1CR^2+sC_1R+1}} 
+\end{align}
+Transfer function was found to be same as given in equation \ref{eq:ee18btech11036_eq_3}
+
+%--------------------------------
+\item Verify the step response of the output from ngspice simulation.\\
+\solution The following netlist file does the transient anaylsis and store the Vout values with respect to time in a dat file. 
+\begin{lstlisting}
+codes/ee18btech11036/spice/ngspice_db.net
+\end{lstlisting}
+Following python code is to plot the step response.
+\begin{lstlisting}
+codes/ee18btech11036/spice/ee18btech11036_spice.py
+\end{lstlisting}
+The step response obtained is shown in Fig. \ref{fig:ee18btech11036_ee18btech11036_5}.The graph has steady state value equal to 50.3 dB/330 V.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./figs/ee18btech11036/ee18btech11036_5.eps}
+\caption{}
+\label{fig:ee18btech11036_ee18btech11036_5}
+\end{figure}
+
+\end{enumerate}
+
+
+

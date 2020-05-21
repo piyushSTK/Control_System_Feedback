@@ -1,0 +1,4 @@
+1-Make sure LM741.mod and ngspice_db.net is in same directory.
+2-Run ngspice ngspice_db.net.
+3-The output file ee18btech11036.dat will be generated
+4-Plot the generated dat file using ee18btech11036_ngspice.py
