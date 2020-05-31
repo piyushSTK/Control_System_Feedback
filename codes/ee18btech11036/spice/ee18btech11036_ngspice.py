@@ -13,7 +13,7 @@ import shlex
 #end if
 
 data=np.loadtxt('ee18btech11036.dat')  #loading the data from the simulation output
-plt.plot(data[:,0],110*data[:,1])  
+plt.plot(data[:,0],30.31*data[:,1])  
 plt.grid()
 plt.xlabel("time")
 plt.ylabel("unit step response")
