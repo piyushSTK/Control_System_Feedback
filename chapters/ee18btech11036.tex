@@ -230,7 +230,7 @@ codes/ee18btech11036/ee18btech11036_4.py
 \item Design a circuit for $T(s)$ in \eqref{eq:ee18btech11036_Transfer_func_1}.
 \\
 \numberwithin{figure}{enumi}
-\solution Consider the circuit in 
+\solution A modular approach to make circuit is used here.The first op-amp corresponds to a simple voltage subtractor while the other two correspond to each of the poles $p_1$ and $p_2$. \\Consider the circuit in 
 %The circuit can be designed using an operational amplifiers having negative feedback.Consider the circuit shown in 
 Fig. \ref{fig:ee18btech11036_equivalent_control_system}.
 %:1.Assume the gain of all the amplifiers are large.And assume no zero state response.Take the parameters in s-domain.\\
@@ -288,11 +288,14 @@ Fig. \ref{fig:ee18btech11036_equivalent_control_system}.
 %    V_1(s) &= -\brak{s^2C_1CR^2+sC_1R+1}V_{out}(s)\label{eq:ee18btech11036_eq_2}
 %\end{align}
 %from equation.\ref{eq:ee18btech11036_opamp_1} and equation.\ref{eq:ee18btech11036_eq_2}.
+%\frac{R_6R_8}{(R_5R_7\brak{s^2C_1C_2R_6R_8+s(C_1R_6+C_2R_8)+1})+HR_6R_8} 
+\small
 \begin{align}
 %     V_1(s) &= \frac{R_1}{R_2}\brak{s^2C_1CR^2+sC_1R+1}V_{out}(s)\\
-    \frac{V_{out}(s)}{V_{in}(s)} &= \frac{R_2}{R_1\brak{s^2C_1CR^2+sC_1R+1}} 
+    T(s)&=\frac{R_6R_8}{(R_5R_7\brak{s^2C_1C_2R_6R_8+s(C_1R_6+C_2R_8)+1})+HR_6R_8} 
     \label{eq:ee18btech11036_eq_3}
 \end{align}
+\normalsize
 Using parameters from \ref{table:ee18btech11036_ Output_Table} in 
 \eqref{eq:ee18btech11036_eq_3}, \eqref{eq:ee18btech11036_Transfer_func_1} is obtained.
 %Comparing equation.\ref{eq:ee18btech11036_Transfer_func_1} and equation.\ref{eq:ee18btech11036_eq_3}
@@ -313,6 +316,18 @@ Using parameters from \ref{table:ee18btech11036_ Output_Table} in
 \caption{}
 \label{table:ee18btech11036_ Output_Table}
 \end{table}
+The value of negative feedback gain:
+\begin{figure}[!hbt]
+	\begin{center}
+			\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11036/feedback_diag.tex}}
+	\end{center}
+\caption{}
+\label{fig:ee18btech11036_neg_gain}
+\end{figure}
+
+
+
+
  The circuit can be represented as block diagram as shown in Fig. \ref{fig:ee18btech11036_block_diag}
 \begin{figure}[!hbt]
 	\begin{center}
@@ -323,17 +338,30 @@ Using parameters from \ref{table:ee18btech11036_ Output_Table} in
 \end{figure}
 \renewcommand{\thefigure}{\theenumi}
 \\
-Solving this block diagram:
+The negative feedback gain :
 \begin{align}
 %     V_1(s) &= \frac{R_1}{R_2}\brak{s^2C_1CR^2+sC_1R+1}V_{out}(s)\\
-    T(s) &= \frac{-R_2}{R_1}\brak{\frac{G(s)}{1+G(s)H(s)}}
+    I &= \frac{V_{out}}{R_9+R_{10}}
+    \label{eq:ee18btech11036_eq_gain1}
+    \\
+    V_f &= IR_{10}
+    \\
+    \implies \frac{V_f}{V_{out}} &= \frac{R_{10}}{R_{10}+R_9}
+    \label{eq:ee18btech11036_eq_gain2}
+\end{align}
+Solving this block diagram:
+\small
+\begin{align}
+%     V_1(s) &= \frac{R_1}{R_2}\brak{s^2C_1CR^2+sC_1R+1}V_{out}(s)\\
+    T(s) &= \frac{G(s)}{1+G(s)H(s)}
     \label{eq:ee18btech11036_eq_5}
     \\
-    T(s) &= \frac{-R_2}{R_1}\brak{\frac{\frac{-1}{\brak{1+sCR}\brak{sCR_1}}}{1+\frac{-1}{\brak{1+sCR}\brak{sCR_1}}\brak{-1}}}
+    T(s) &= \frac{\frac{R_6R_8}{\brak{R_5R_7}\brak{1+sC_1R_6}\brak{1+sC_2R_8}}}{1+\frac{R_6R_8}{\brak{R_5R_7}\brak{1+sC_1R_6}\brak{sC_2R_8}}\brak{H}}
     \label{eq:ee18btech11036_eq_6}
     \\
-    \implies T(s) &= \frac{R_2}{R_1\brak{s^2C_1CR^2+sC_1R+1}} 
+    \implies T(s)&=\frac{R_6R_8}{R_5R_7\brak{s^2C_1C_2R_6R_8+s(C_1R_6+C_2R_8)+1}+HR_6R_8} 
 \end{align}
+\normalsize
 Transfer function was found to be same as given in equation \ref{eq:ee18btech11036_eq_3}
 
 %--------------------------------

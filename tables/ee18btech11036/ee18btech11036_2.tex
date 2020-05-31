@@ -56,15 +56,15 @@
 	\documentclass[12pt%
 			  %,landscape%
                     ]{report}
-       \usepackage[latin1]{inputenc}
-       \usepackage{fullpage}
-       \usepackage{color}
-       \usepackage{array}
-       \usepackage{longtable}
-       \usepackage{calc}
-       \usepackage{multirow}
-       \usepackage{hhline}
-       \usepackage{ifthen}
+      \usepackage[latin1]{inputenc}
+      \usepackage{fullpage}
+      \usepackage{color}
+      \usepackage{array}
+      \usepackage{longtable}
+      \usepackage{calc}
+      \usepackage{multirow}
+      \usepackage{hhline}
+      \usepackage{ifthen}
 
 
 
@@ -190,37 +190,54 @@
 \\
 \hhline{|-|-}
 	 \multicolumn{1}{|p{\gnumericColA}|}%
-	{\gnumericPB{\centering}\gnumbox{\text{$R_1$}}}
+	{\gnumericPB{\centering}\gnumbox{\text{$R_1,R_2,R_3,R_4$}}}
 	&\multicolumn{1}{p{\gnumericColB}|}%
-	{\gnumericPB{\centering}\gnumbox{\text{100 $\Omega$}}}
+	{\gnumericPB{\centering}\gnumbox{\text{$1k \Omega$}}}
 \\
 \hhline{|-|-}
 	 \multicolumn{1}{|p{\gnumericColA}|}%
-	{\gnumericPB{\centering}\gnumbox{\text{$R_2$}}}
+	{\gnumericPB{\centering}\gnumbox{\text{$R_5,R_7$}}}
 	&\multicolumn{1}{p{\gnumericColB}|}%
-	{\gnumericPB{\centering}\gnumbox{\text{33 k$\Omega$}}}
+	{\gnumericPB{\centering}\gnumbox{\text{$100 \Omega$}}}
 \\
 \hhline{|-|-}
 	 \multicolumn{1}{|p{\gnumericColA}|}%
-	{\gnumericPB{\centering}\gnumbox{\text{R}}}
+	{\gnumericPB{\centering}\gnumbox{\text{$R_6$}}}
 	&\multicolumn{1}{p{\gnumericColB}|}%
-	{\gnumericPB{\centering}\gnumbox{\text{1.446 k$\Omega$}}}
+	{\gnumericPB{\centering}\gnumbox{\text{$10k \Omega$}}}
 \\
 \hhline{|-|-}
 	 \multicolumn{1}{|p{\gnumericColA}|}%
-	{\gnumericPB{\centering}\gnumbox{\text{C}}}
+	{\gnumericPB{\centering}\gnumbox{\text{$R_8$}}}
 	&\multicolumn{1}{p{\gnumericColB}|}%
-	{\gnumericPB{\centering}\gnumbox{\text{1 nF}}}
+	{\gnumericPB{\centering}\gnumbox{\text{$1k\Omega$}}}
 \\
 \hhline{|-|-}
 	 \multicolumn{1}{|p{\gnumericColA}|}%
-	{\gnumericPB{\centering}\gnumbox{\text{$C_1$}}}
+	{\gnumericPB{\centering}\gnumbox{\text{$R_9$}}}
 	&\multicolumn{1}{p{\gnumericColB}|}%
-	{\gnumericPB{\centering}\gnumbox{\text{4 nF}}}
+	{\gnumericPB{\centering}\gnumbox{\text{$4928 \Omega$}}}
 \\
+\hhline{|-|-}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}\gnumbox{\text{$R_{10}$}}}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}\gnumbox{\text{$10 \Omega$}}}
+\\
+\hhline{|-|-}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}\gnumbox{\text{$C_1,C_2$}}}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}\gnumbox{\text{1.59 nF}}}
+\\
+
 
 \hhline{|-|-|}
 \end{tabular}
 
 \ifthenelse{\isundefined{\languageshorthands}}{}{\languageshorthands{\languagename}}
 \gnumericTableEnd
+
+
+
+

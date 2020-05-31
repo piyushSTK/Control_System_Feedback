@@ -6,16 +6,14 @@
 \tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
 
 % The block diagram code is probably more verbose than necessary
-\begin{tikzpicture}[auto, node distance=2.5cm,>=latex']
-% We start by placing the blocks
+\begin{tikzpicture}[auto, node distance=4cm,>=latex']
+    % We start by placing the blocks
     \node [input, name=input] {};
-    \node [block, right of=input] (gain) {$\frac{-R_2}{R_1}$};
-    \node [sum, right of=gain] (sum) {};
-    \node [block, right of=sum] (g1) {$\frac{-1}{1+sCR}$};
-    \node [block, right of=g1] (g2) {-1};
-    \node [block, right of=g2] (g3) {$\frac{-1}{sCR_1}$};
-    \node [output, right of=g3] (output) {};
-    \node [block, below of=g2] (feedback_gain) {-1};
+    \node [sum, right of=input] (sum) {};
+    \node [block, right of=sum] (g1) {$\frac{-R_6}{(R_5)(1+sC_1R_6)}$};
+    \node [block, right of=g1] (g2) {$\frac{-R_8}{(R_7)(1+sC_2R_8)}$};
+    \node [output, right of=g2] (output) {};
+    \node [block, below of=g2] (feedback_gain) {$\frac{R_{10}}{R_9+R_{10}}$};
     % \node [block, right of=controller, pin={[pinstyle]above:Disturbances},
     %         node distance=3cm] (system) {System};
     % We draw an edge between the controller and system block to 
@@ -31,12 +29,10 @@
     % \draw [->] (y) |- (measurements);
     % \draw [->] (measurements) -| node[pos=0.99] {$-$} 
     %     node [near end] {$y_m$} (sum);
-    \draw [draw,->] (input) -- node[pos=0.99] {$ $} node {$V_{in}$} (gain);
-    \draw [->] (gain) -- node {$ $} (sum);
+    \draw [draw,->] (input) -- node[pos=0.99] {$ $} node {$V_{in}$} (sum);
     \draw [->] (sum) -- node {$ $} (g1);
     \draw [->] (g1) -- node {$  $} (g2);
-    \draw [->] (g2) -- node {$ $} (g3);
-    \draw [->] (g3) -- node [name=y] {$V_{o}$}(output);
+    \draw [->] (g2) -- node [name=y] {$V_{o}$}(output);
     \draw [->] (y) |- (feedback_gain);
     \draw [->] (feedback_gain) -| node[pos=0.99] {$-$} node [near end] {$V_{f}$} (sum);
 \end{tikzpicture}
